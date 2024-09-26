@@ -1,0 +1,40 @@
+xor R[0] R[0]
+xor R[1] R[1]
+xor R[2] R[2]
+xor R[3] R[3]
+addi 3
+add R[1] R[0]
+xor R[0] R[0]
+st R[1] R[0]
+addi 7
+addi 3
+add R[3] R[0]
+add R[2] R[0]
+addi -8
+slr R[2] R[0]
+add R[2] R[0]
+addi -1
+st R[2] R[0]
+xor R[0] R[0]
+xor R[2] R[2]
+sub R[2] R[1]
+addi 5
+slr R[0] R[1]
+ji 2
+ji -4
+addi 1
+brzr R[2] R[0]
+add R[2] R[1]
+xor R[0] R[0]
+add R[3] R[2]
+addi 1
+ji 2
+ji -8
+ld R[1] R[0]
+add R[1] R[2]
+st R[1] R[3]
+sub R[3] R[2]
+add R[2] R[0]
+xor R[0] R[0]
+ld R[1] R[0]
+ji -8
