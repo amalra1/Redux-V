@@ -1,0 +1,12 @@
+int a = 5;
+int b = -25;
+int *c = 3;
+
+int i = 0;
+
+for(;i<a;i++) {
+    rol(b, (i+1));
+    if (b < 0)
+        b = b * (i+1);
+    c[i] = b;
+}
