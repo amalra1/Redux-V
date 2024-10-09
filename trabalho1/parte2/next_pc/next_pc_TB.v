@@ -1,56 +1,70 @@
 `timescale 1ns/1ps
 module next_pc_TB();
     reg jmx, bmx;
-    reg[7:0] curPC, imm, Rb;
+    reg[7:0] curPC, Rb;
+    reg signed[7:0] imm;
     wire[7:0] pc;
 
-
+    next_pc DUT(.jmx(jmx), .bmx(bmx), .curPC(curPC), .imm(imm), .Rb(Rb), .pc(pc));
 
     initial begin
         $dumpfile("next_pc.vcd");
         $dumpvars(5, next_pc_TB);
-        #100 $finish();
     end
 
 
     initial begin
+        curPC = 120;
+        imm = 6;
+        Rb = 55;
+        bmx = 0;
+        jmx = 0;
+
+        #10
+
+        $display("curPC = %d", curPC);
+        $display("imm   = %d", imm);
+        $display("Rb    = %d", Rb);
+
+        $display("\nTeste para bmx = 0, jmx = 0");
+        $display("Resultado     : pc = %d", pc);
+
+
+        curPC = pc;
+        bmx = 0;
+        jmx = 1;
+
+        #10 
+
+        $display("\nTeste para bmx = 0, jmx = 1");
+        $display("Resultado     : pc = %d", pc);
+
+        curPC = pc;
+
+        #10
+
+        $display("\nTeste para bmx = 0, jmx = 1");
+        $display("Resultado     : pc = %d", pc);
+
+        curPC = pc;
+        bmx = 1;
+
+        #10 
+
+        $display("\nTeste para bmx = 1");
+        $display("Resultado     : pc = %d", pc);
+
+        $display("\nSetando curPC = 0; imm = -4");
+
         curPC = 0;
-        $display("teste 1 %b", curPC + 8'd1);
-
-        // if ((Q == 0) && (nQ == 1)) $display("Teste 1 - OK");
-        // else $display ("Teste 1 - Falha com J: %b e K: %b - Olhe o GTKWave para detalhes", J, K);
-
-        // J = 1; K = 0;
-
-        // if ((Q == 0) && (nQ == 1)) $display("Teste 1.5 - OK");
-        // else $display ("Teste 1.5 - Falha - saída atualizada antes do clock - Olhe o GTKWave para detalhes");
-
-        // #1
-        // Clk = ~Clk; #1 Clk = ~Clk;
-        // #1
-
-        // if ((Q == 1) && (nQ == 0)) $display("Teste 2 - OK");
-        // else $display ("Teste 2 - Falha com J: %b e K: %b - Olhe o GTKWave para detalhes", J, K);
-
-        // J = 1; K = 1;
-
-        // if ((Q == 1) && (nQ == 0)) $display("Teste 2.5 - OK");
-        // else $display ("Teste 2.5 - Falha - saída atualizada antes do clock - Olhe o GTKWave para detalhes");
+        imm = -4;
+        bmx = 0;
+        jmx = 1;
         
-        // #1
-        // Clk = ~Clk; #1 Clk = ~Clk;
-        // #1
+        #10
 
-        // if ((Q == 0) && (nQ == 1)) $display("Teste 3 - OK");
-        // else $display ("Teste 3 - Falha com J: %b e K: %b - Olhe o GTKWave para detalhes", J, K);
+        $display("\nTeste para bmx = 0, jmx = 1");
+        $display("Resultado     : pc = %d", pc);
 
-
-        // J = 0; K = 0;
-        // #1
-        // Clk = ~Clk; #1 Clk = ~Clk;
-        // #1
-
-        // if ((Q == 0) && (nQ == 1)) $display("Teste 4 - OK");
-        // else $display ("Teste 4 - Falha com J: %b e K: %b - Olhe o GTKWave para detalhes", J, K);
     end
 endmodule
