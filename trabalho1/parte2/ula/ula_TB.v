@@ -20,7 +20,7 @@ module ula_TB();
         $display("Valor em R[A] = %b", A);
         $display("Valor em R[B] = %b", B);
 
-        #10
+        #10;
 
         $display("\nTodas as operações da ULA:\n");
         for (Seletor = 0; Seletor < 10; Seletor = Seletor + 1) begin
@@ -40,7 +40,7 @@ module ula_TB();
             $display("Seletor = %b, Resultado = %b, ZERO = %d\n", Seletor, S, ZERO);
         end
 
-        #10
+        #10;
 
         $display("Subtracao que retorna S == 0:");
         Seletor = 5;
@@ -50,17 +50,20 @@ module ula_TB();
         $display("Valor em R[B] = %b", B);
         $display("Seletor = %b, Resultado = %b, ZERO = %d\n", Seletor, S, ZERO);
 
-        #10
+        #10;
 
         $display("Operacao ROL que da mais de uma volta em R[A]:");
         Seletor = 9;
         A = 8'b01000111;
         B = 8'b00001100;
+
+	#10;
+
         $display("Valor em R[A] = %b", A);
         $display("Valor em R[B] = %b", B);
         $display("Seletor = %b, Resultado = %b, ZERO = %d\n", Seletor, S, ZERO);
 
-        #10
+        #10;
 
     end
 endmodule
