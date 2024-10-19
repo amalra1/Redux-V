@@ -12,21 +12,17 @@ module memoria_instrucoes_TB ();
 
     initial 
     begin
-        #10;
-        endereco = 8'd0;
-	#10;
-        $display("Endereco[%b] = [%b]", endereco, instrucao);
-        endereco = 8'd100;
-	#10;
-        $display("Endereco[%b] = [%b]", endereco, instrucao);
-        endereco = 8'd255;
-	#10;
-        $display("Endereco[%b] = [%b]", endereco, instrucao);
-        #10;
-	endereco = 8'd4;
-	#10;
-	$display("Endereco[%b] = [%b]", endereco, instrucao);
-	#10;
-    end
+        #10;  
+        for (endereco = 0; endereco <= 101; endereco = endereco + 1) 
+        begin
+            #10;  
+            $display("Endereco[%d] = [%b]", endereco, instrucao);
 
+            // Fim de algoritmo
+            if (instrucao === 8'bxxxxxxxx) 
+            begin
+                $display("-------Algoritmo finalizado");
+            end 
+        end
+    end
 endmodule
