@@ -4,7 +4,7 @@ module memoria_instrucoes(
 );
 
     // Cria a memória (Matriz)
-    reg[7:0][0:255] memoria;
+    reg[7:0] memoria[0:255];
 
     // Inicializa a memória com as instrucoes passadas
     initial 
