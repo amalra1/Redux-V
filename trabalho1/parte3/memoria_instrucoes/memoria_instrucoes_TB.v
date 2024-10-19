@@ -1,7 +1,7 @@
 module memoria_instrucoes_TB ();
     reg[7:0] entrada;
     reg clk;
-    reg[7:0] endereco;
+    wire[7:0] endereco;
     wire[7:0] instrucao;
     
     contador_de_programa PC (.entrada(entrada), .clk(clk), .saida(endereco));
@@ -33,5 +33,6 @@ module memoria_instrucoes_TB ();
                 $display("-------Algoritmo finalizado");
             end 
         end
+	$finish;
     end
 endmodule
