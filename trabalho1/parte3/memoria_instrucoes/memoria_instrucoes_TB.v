@@ -1,8 +1,11 @@
 module memoria_instrucoes_TB ();
+    reg[7:0] entrada;
+    reg clk;
     reg[7:0] endereco;
     wire[7:0] instrucao;
     
-    memoria_instrucoes DUT(.endereco(endereco), .instrucao(instrucao));
+    contador_de_programa PC (.entrada(entrada), .clk(clk), .saida(endereco));
+    memoria_instrucoes MEM (.endereco(endereco), .instrucao(instrucao));
 
     initial 
     begin
@@ -10,12 +13,18 @@ module memoria_instrucoes_TB ();
         $dumpvars(5, memoria_instrucoes_TB);
     end
 
+    always 
+    begin
+        #5 clk = ~clk;
+    end
+
     initial 
     begin
+        clk = 0;
         #10;  
-        for (endereco = 0; endereco <= 101; endereco = endereco + 1) 
+        for (entrada = 0; entrada <= 101; entrada = entrada + 1) 
         begin
-            #10;  
+            #10;
             $display("Endereco[%d] = [%b]", endereco, instrucao);
 
             // Fim de algoritmo
