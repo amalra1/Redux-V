@@ -12,16 +12,21 @@ module memoria_instrucoes_TB ();
 
     initial 
     begin
-        #10
+        #10;
         endereco = 8'd0;
+	#10;
         $display("Endereco[%b] = [%b]", endereco, instrucao);
-        #10
         endereco = 8'd100;
+	#10;
         $display("Endereco[%b] = [%b]", endereco, instrucao);
-        #10
         endereco = 8'd255;
+	#10;
         $display("Endereco[%b] = [%b]", endereco, instrucao);
-        #10
+        #10;
+	endereco = 8'd4;
+	#10;
+	$display("Endereco[%b] = [%b]", endereco, instrucao);
+	#10;
     end
 
 endmodule

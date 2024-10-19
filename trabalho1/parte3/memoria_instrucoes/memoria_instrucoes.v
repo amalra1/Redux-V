@@ -1,6 +1,6 @@
 module memoria_instrucoes(
     input wire[7:0] endereco,
-    output reg[7:0] instrucao;
+    output reg[7:0] instrucao
 );
 
     // Cria a memória (Matriz)
@@ -10,7 +10,7 @@ module memoria_instrucoes(
     initial 
     begin
         memoria[0] = 8'b01010101;
-        memoria[255] = 8'b11111111;
+        memoria[4] = 8'b11111111;
     end
 
     always @*
