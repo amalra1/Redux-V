@@ -1,7 +1,7 @@
 module memoria_dados(
     input wire writeEnable,
     input wire[7:0] endereco,
-    input reg[7:0] dadoEntrada,
+    input wire[7:0] dadoEntrada,
     input wire clk,
     output reg[7:0] dadoSaida
 );
