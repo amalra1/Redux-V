@@ -1,11 +1,11 @@
 `timescale 1ns/1ps
 module next_pc_TB();
     reg jmx, bmx;
-    reg[7:0] curPC, Rb;
+    reg[7:0] curPC, b;
     reg signed[7:0] imm;
     wire[7:0] pc;
 
-    next_pc DUT(.jmx(jmx), .bmx(bmx), .curPC(curPC), .imm(imm), .Rb(Rb), .pc(pc));
+    next_pc DUT(.jmx(jmx), .bmx(bmx), .curPC(curPC), .imm(imm), .b(b), .pc(pc));
 
     initial begin
         $dumpfile("next_pc.vcd");
@@ -16,7 +16,7 @@ module next_pc_TB();
     initial begin
         curPC = 120;
         imm = 6;
-        Rb = 55;
+        b = 55;
         bmx = 0;
         jmx = 0;
 
@@ -24,7 +24,7 @@ module next_pc_TB();
 
         $display("curPC = %d", curPC);
         $display("imm   = %d", imm);
-        $display("Rb    = %d", Rb);
+        $display("b    = %d", b);
 
         $display("\nTeste para bmx = 0, jmx = 0");
         $display("Resultado     : pc = %d", pc);
