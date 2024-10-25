@@ -1,21 +1,20 @@
 module ula 
 (
-    input wire[7:0] A,
-    input wire[7:0] B,
-    input wire[3:0] Seletor,
-    output wire[7:0] S
+    input wire[7:0] a, b,
+    input wire[3:0] select,
+    output wire[7:0] s
 );
 
-    assign S = (Seletor == 4'b0000) ? ~A : 
-    (Seletor == 4'b0001) ? (A & B) :  // AND
-    (Seletor == 4'b0010) ? (A | B) :  // OR
-    (Seletor == 4'b0011) ? (A ^ B) :  // XOR
-    (Seletor == 4'b0100) ? (A + B) :  // ADD
-    (Seletor == 4'b0101) ? (A - B) :  // SUB
-    (Seletor == 4'b0110) ? (A << B) :  // SLR
-    (Seletor == 4'b0111) ? (A >> B) :  // SRR
-    (Seletor == 4'b1000) ? (A * B) :  // MUL
-    (Seletor == 4'b1001) ? ((A << (B % 8'd8)) | (A >> (8'd8 - (B % 8'd8)))) :  // ROL
+    assign s = (select == 4'b0000) ? ~a : 
+    (select == 4'b0001) ? (a & b) :  // aND
+    (select == 4'b0010) ? (a | b) :  // OR
+    (select == 4'b0011) ? (a ^ b) :  // XOR
+    (select == 4'b0100) ? (a + b) :  // ADD
+    (select == 4'b0101) ? (a - b) :  // SUB
+    (select == 4'b0110) ? (a << b) :  // SLR
+    (select == 4'b0111) ? (a >> b) :  // SRR
+    (select == 4'b1000) ? (a * b) :  // MUL
+    (select == 4'b1001) ? ((a << (b % 8'd8)) | (a >> (8'd8 - (b % 8'd8)))) :  // ROL
     8'b0;
 
 endmodule

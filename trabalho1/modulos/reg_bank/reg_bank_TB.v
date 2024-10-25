@@ -1,15 +1,15 @@
-module banco_reg_TB ();
+module reg_bank_TB ();
 
 reg clk, write_enable;
 reg[1:0] r_a, r_b, write_addr;
 reg[7:0] write_data;
 wire[7:0] a, b;
 
-banco_reg REGS(.clk(clk), .write_enable(write_enable), .r_a(r_a), .r_b(r_b), .write_addr(write_addr), .write_data(write_data), .a(a), .b(b));
+reg_bank REGS(.clk(clk), .write_enable(write_enable), .r_a(r_a), .r_b(r_b), .write_addr(write_addr), .write_data(write_data), .a(a), .b(b));
 
 initial begin 
-    $dumpfile("banco_reg.vcd");
-    $dumpvars(5, banco_reg_TB);
+    $dumpfile("reg_bank.vcd");
+    $dumpvars(5, reg_bank_TB);
 end
 
 initial begin: clock

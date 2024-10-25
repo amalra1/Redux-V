@@ -1,13 +1,13 @@
-module contador_de_programa_TB ();
-    reg [7:0] entrada;
+module program_counter_TB ();
+    reg [7:0] n_pc;
     reg clk;
-    wire [7:0] saida;
+    wire [7:0] cur_pc;
     
-    contador_de_programa DUT(.entrada(entrada), .clk(clk), .saida(saida));
+    program_counter DUT(.n_pc(n_pc), .clk(clk), .cur_pc(cur_pc));
 
     initial begin
-        $dumpfile("contador_de_programa.vcd");
-        $dumpvars(5, contador_de_programa_TB);
+        $dumpfile("program_counter.vcd");
+        $dumpvars(5, program_counter_TB);
     end
 
     initial begin
@@ -41,27 +41,27 @@ module contador_de_programa_TB ();
 
     initial begin
         clk = 0;
-        entrada = 8'd10;
+        n_pc = 8'd10;
         #15
-        entrada = 8'd11;
+        n_pc = 8'd11;
         #15
-        entrada = 8'd19;
+        n_pc = 8'd19;
         #15
-        entrada = 8'd12;
+        n_pc = 8'd12;
         #15
-        entrada = 8'd13;
+        n_pc = 8'd13;
         #15
-        entrada = 8'd19;
+        n_pc = 8'd19;
         #15
-        entrada = 8'd11;
+        n_pc = 8'd11;
         #15
-        entrada = 8'd13;
+        n_pc = 8'd13;
         #15
-        entrada = 8'd14;
+        n_pc = 8'd14;
         #15
-        entrada = 8'd18;
+        n_pc = 8'd18;
         #15
-        entrada = 8'd10;
+        n_pc = 8'd10;
     end
 
 endmodule

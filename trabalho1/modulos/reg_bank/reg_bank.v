@@ -1,4 +1,4 @@
-module banco_reg (
+module reg_bank (
     input wire clk, write_enable, 
     input wire[1:0] r_a, r_b, write_addr,
     input wire[7:0] write_data,

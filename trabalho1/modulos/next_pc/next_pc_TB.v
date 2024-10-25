@@ -1,11 +1,11 @@
 `timescale 1ns/1ps
 module next_pc_TB();
-    reg jmx, bmx;
-    reg[7:0] curPC, b;
+    reg jmx, bmx, zero_flag;
+    reg[7:0] cur_pc, b;
     reg signed[7:0] imm;
-    wire[7:0] pc;
+    wire[7:0] n_pc;
 
-    next_pc DUT(.jmx(jmx), .bmx(bmx), .curPC(curPC), .imm(imm), .b(b), .pc(pc));
+    next_pc DUT(.jmx(jmx), .bmx(bmx), .cur_pc(cur_pc), .imm(imm), .b(b), .n_pc(n_pc));
 
     initial begin
         $dumpfile("next_pc.vcd");
@@ -14,7 +14,7 @@ module next_pc_TB();
 
 
     initial begin
-        curPC = 120;
+        cur_pc = 120;
         imm = 6;
         b = 55;
         bmx = 0;
@@ -22,41 +22,41 @@ module next_pc_TB();
 
         #10
 
-        $display("curPC = %d", curPC);
+        $display("cur_pc = %d", cur_pc);
         $display("imm   = %d", imm);
         $display("b    = %d", b);
 
         $display("\nTeste para bmx = 0, jmx = 0");
-        $display("Resultado     : pc = %d", pc);
+        $display("Resultado     : pc = %d", n_pc);
 
 
-        curPC = pc;
+        cur_pc = n_pc;
         bmx = 0;
         jmx = 1;
 
         #10 
 
         $display("\nTeste para bmx = 0, jmx = 1");
-        $display("Resultado     : pc = %d", pc);
+        $display("Resultado     : pc = %d", n_pc);
 
-        curPC = pc;
+        cur_pc = n_pc;
 
         #10
 
         $display("\nTeste para bmx = 0, jmx = 1");
-        $display("Resultado     : pc = %d", pc);
+        $display("Resultado     : pc = %d", n_pc);
 
-        curPC = pc;
+        cur_pc = n_pc;
         bmx = 1;
 
         #10 
 
         $display("\nTeste para bmx = 1");
-        $display("Resultado     : pc = %d", pc);
+        $display("Resultado     : pc = %d", n_pc);
 
-        $display("\nSetando curPC = 0; imm = -4");
+        $display("\nSetando cur_pc = 0; imm = -4");
 
-        curPC = 0;
+        cur_pc = 0;
         imm = -4;
         bmx = 0;
         jmx = 1;
@@ -64,7 +64,7 @@ module next_pc_TB();
         #10
 
         $display("\nTeste para bmx = 0, jmx = 1");
-        $display("Resultado     : pc = %d", pc);
+        $display("Resultado     : pc = %d", n_pc);
 
     end
 endmodule
