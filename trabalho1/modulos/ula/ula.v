@@ -5,8 +5,8 @@ module ula
     output wire[7:0] s
 );
 
-    assign s = (select == 4'b0000) ? ~a : 
-    (select == 4'b0001) ? (a & b) :  // aND
+    assign s = (select == 4'b0000) ? ~b : 
+    (select == 4'b0001) ? (a & b) :  // AND
     (select == 4'b0010) ? (a | b) :  // OR
     (select == 4'b0011) ? (a ^ b) :  // XOR
     (select == 4'b0100) ? (a + b) :  // ADD

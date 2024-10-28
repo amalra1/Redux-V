@@ -24,7 +24,7 @@ module ula_TB();
         for (select = 0; select < 10; select = select + 1) begin
             #10;
             
-            if (select == 0) $display("NOT R[a]:");
+            if (select == 0) $display("NOT R[b]:");
             else if (select == 1) $display("R[a] AND R[b]:");
             else if (select == 2) $display("R[a] OR R[b]:");
             else if (select == 3) $display("R[a] XOR R[b]:");
