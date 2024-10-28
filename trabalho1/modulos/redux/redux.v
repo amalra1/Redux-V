@@ -1,4 +1,6 @@
-module redux (
+module redux #(
+    parameter ALG = 1
+)(
     input wire clk
 );
     wire[7:0] cur_pc, n_pc, imm_extended, a, b, instruction, write_data, ula_out, data_out, b_ula, imm_unsigned;
@@ -28,7 +30,7 @@ module redux (
         .cur_pc(cur_pc)
     );
 
-    instruction_memory #(.ALG(3)) MEI(
+    instruction_memory #(.ALG(ALG)) MEI(
         .address(cur_pc), 
         .instruction(instruction)
     );
