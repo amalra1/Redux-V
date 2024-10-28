@@ -5,15 +5,15 @@ module data_memory(
 );
 
     // Cria a memória (Matriz)
-    reg[7:0] memoria[0:255];
+    reg[7:0] memory[0:255];
 
     always @(posedge clk)
     begin
         if (write_enable == 1) 
         begin
-            memoria[address] = data_in;
+            memory[address] = data_in;
         end
     end
 
-    assign data_out = memoria[address];
+    assign data_out = memory[address];
 endmodule
