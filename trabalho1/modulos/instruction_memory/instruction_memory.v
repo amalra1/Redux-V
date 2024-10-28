@@ -119,6 +119,23 @@ module instruction_memory #(
             memory[63] = 8'b11011100;
             memory[64] = 8'b00110111;
             memory[65] = 8'b00011000;
+        end else begin
+            memory[0] = 8'b01000111;
+            memory[1] = 8'b00111000;
+            memory[2] = 8'b01011111;
+            memory[3] = 8'b11010100;
+            memory[4] = 8'b10001000;
+            memory[5] = 8'b11001101;
+            memory[6] = 8'b10111100;
+            memory[7] = 8'b01100110;
+            memory[8] = 8'b10010111;
+            memory[9] = 8'b10100010;
+            memory[10] = 8'b11110010;
+            memory[11] = 8'b11100010;
+            memory[12] = 8'b01110010;
+            memory[13] = 8'b00000001;
+            memory[14] = 8'b00100010;
+            memory[15] = 8'b00011110;
         end
         
     end

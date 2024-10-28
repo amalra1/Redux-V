@@ -28,7 +28,7 @@ module redux (
         .cur_pc(cur_pc)
     );
 
-    instruction_memory #(.ALG(2)) MEI(
+    instruction_memory #(.ALG(3)) MEI(
         .address(cur_pc), 
         .instruction(instruction)
     );
