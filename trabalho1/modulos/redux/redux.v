@@ -1,7 +1,8 @@
 module redux #(
     parameter ALG = 1
 )(
-    input wire clk
+    input wire clk,
+    output wire[7:0] out
 );
     wire[7:0] cur_pc, n_pc, imm_extended, a, b, instruction, write_data, ula_out, data_out, b_ula, imm_unsigned;
     wire[3:0] sel_ula, imm, opcode;
@@ -17,6 +18,8 @@ module redux #(
     assign write_data = d_mx ? ula_out : data_out;
     assign b_ula = se_mx ? (u_imm ? imm_unsigned : imm_extended) : b;
     assign zero_flag = (a == 8'b00000000) ? 1 : 0;
+
+    assign out = ula_out;
 
     next_pc NPC(
         .jmx(j_mx), .bmx(b_mx), .zero_flag(zero_flag),

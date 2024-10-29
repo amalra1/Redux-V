@@ -4,7 +4,7 @@ module control_memory (
     output reg b_mx, j_mx, r_mx, se_mx, d_mx, we, re, u_imm
 );
 
-always @(opcode) begin
+always @* begin
     case (opcode)
         4'b0000: begin b_mx = 1;           r_mx = 0;                                         we = 0; re = 0;            end
         4'b0001: begin b_mx = 0; j_mx = 1;                                                   we = 0; re = 0; u_imm = 1; end
