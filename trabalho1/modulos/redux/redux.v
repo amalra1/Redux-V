@@ -1,7 +1,7 @@
 module redux #(
     parameter ALG = 1
 )(
-    input wire clk,
+    input wire clk, reset,
     output wire[7:0] out
 );
     wire[7:0] cur_pc, n_pc, imm_extended, a, b, instruction, write_data, ula_out, data_out, b_ula, imm_unsigned;
@@ -30,6 +30,7 @@ module redux #(
     program_counter PC(
         .n_pc(n_pc), 
         .clk(clk),
+        .reset(reset),
         .cur_pc(cur_pc)
     );
 
@@ -45,7 +46,7 @@ module redux #(
     );
         
     reg_bank BRE(
-        .clk(clk), .write_enable(re),
+        .clk(clk), .reset(reset), .write_enable(re),
         .r_a(r_a), .r_b(r_b), .write_addr(r_a),
         .write_data(write_data),
         .a(a), .b(b)
@@ -58,7 +59,7 @@ module redux #(
     );
 
     data_memory MED(
-        .clk(clk), .write_enable(we), 
+        .clk(clk), .reset(reset), .write_enable(we), 
         .address(b), .data_in(a), 
         .data_out(data_out)
     );

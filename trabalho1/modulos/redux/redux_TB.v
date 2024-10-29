@@ -3,10 +3,11 @@ module redux_TB ();
 reg clk1;
 reg clk2;
 reg clk3;
+reg reset;
 
-redux #(.ALG(1)) RED1(.clk(clk1));
-redux #(.ALG(2)) RED2(.clk(clk2));
-redux #(.ALG(3)) RED3(.clk(clk3));
+redux #(.ALG(1)) RED1(.clk(clk1), .reset(reset));
+redux #(.ALG(2)) RED2(.clk(clk2), .reset(reset));
+redux #(.ALG(3)) RED3(.clk(clk3), .reset(reset));
 
 initial begin 
     $dumpfile("redux.vcd");
@@ -30,13 +31,21 @@ end
 initial begin: clock
 
     $display("Testando algoritmo 1:");
+    reset = 1;
     clk1 = 0;
+    #10
+    clk1 = 1;
+    #10
+    clk1 = 0;
+    reset = 0;
+    #10
+    clk1 = 1;
     while (RED1.cur_pc !== 8'bxxxxxxxx) begin
         #10;
         clk1 = ~clk1;
     end
     
-    for (reg[7:0] j = 0; j < 255; j++) begin
+    for (reg[7:0] j = 0; j <= 255; j++) begin
         if (RED1.MED.memory[j] !== 8'bxxxxxxxx) 
             $display("M[%d] = %d", j, $signed(RED1.MED.memory[j]));
     end
@@ -44,13 +53,21 @@ initial begin: clock
     $display();
 
     $display("Testando algoritmo 2:");
+    reset = 1;
     clk2 = 0;
+    #10
+    clk2 = 1;
+    #10
+    clk2 = 0;
+    reset = 0;
+    #10
+    clk2 = 1;
     while (RED2.cur_pc !== 8'bxxxxxxxx) begin
         #10;
         clk2 = ~clk2;
     end
     
-    for (reg[7:0] j = 0; j < 255; j++) begin
+    for (reg[7:0] j = 0; j <= 255; j++) begin
         if (RED2.MED.memory[j] !== 8'bxxxxxxxx) 
             $display("M[%d] = %d", j, $signed(RED2.MED.memory[j]));
     end
@@ -58,7 +75,15 @@ initial begin: clock
     $display();
 
     $display("Testando algoritmo 3:");
+    reset = 1;
     clk3 = 0;
+    #10
+    clk3 = 1;
+    #10
+    clk3 = 0;
+    reset = 0;
+    #10
+    clk3 = 1;
 
     $display("00 addi 7:");
     #10;

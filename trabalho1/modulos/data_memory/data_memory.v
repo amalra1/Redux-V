@@ -1,5 +1,5 @@
 module data_memory(
-    input wire clk, write_enable, 
+    input wire clk, reset, write_enable, 
     input wire[7:0] address, data_in,
     output wire[7:0] data_out
 );
@@ -9,7 +9,14 @@ module data_memory(
 
     always @(posedge clk)
     begin
-        if (write_enable == 1) 
+
+        if (reset)
+        begin
+            for (integer i = 0; i <= 255; i++)
+                memory[i] = 0;
+        end
+
+        else if (write_enable == 1) 
         begin
             memory[address] = data_in;
         end
