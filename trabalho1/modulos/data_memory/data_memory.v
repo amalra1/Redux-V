@@ -12,7 +12,7 @@ module data_memory(
 
         if (reset)
         begin
-            for (integer i = 0; i <= 255; i++)
+            for (integer i = 0; i <= 255; i = i + 1)
                 memory[i] <= 0;
         end
 

@@ -14,7 +14,7 @@ end
 
 initial begin: clock
     clk = 0;
-    for (integer i = 0; i < 40; i++) begin
+    for (integer i = 0; i < 40; i = i + 1) begin
         clk = ~clk;
         #10;
     end

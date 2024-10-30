@@ -45,7 +45,7 @@ initial begin: clock
         clk1 = ~clk1;
     end
     
-    for (integer j = 0; j <= 255; j++) begin
+    for (integer j = 0; j <= 255; j = j + 1) begin
         if (RED1.MED.memory[j] !== 8'bxxxxxxxx) 
             $display("M[%3d] = %d", j, $signed(RED1.MED.memory[j]));
     end
@@ -67,7 +67,7 @@ initial begin: clock
         clk2 = ~clk2;
     end
     
-    for (integer j = 0; j <= 255; j++) begin
+    for (integer j = 0; j <= 255; j = j + 1) begin
         if (RED2.MED.memory[j] !== 8'bxxxxxxxx) 
             $display("M[%3d] = %d", j, $signed(RED2.MED.memory[j]));
     end
