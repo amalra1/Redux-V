@@ -11,10 +11,10 @@ always @(posedge clk) begin
 
     if (reset)
     begin
-        regs[0] = 8'b00000000;
-        regs[1] = 8'b00000000;
-        regs[2] = 8'b00000000;
-        regs[3] = 8'b00000000;
+        regs[0] <= 8'b00000000;
+        regs[1] <= 8'b00000000;
+        regs[2] <= 8'b00000000;
+        regs[3] <= 8'b00000000;
     end    
     
     else if (write_enable) begin

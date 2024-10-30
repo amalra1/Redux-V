@@ -13,12 +13,12 @@ module data_memory(
         if (reset)
         begin
             for (integer i = 0; i <= 255; i++)
-                memory[i] = 0;
+                memory[i] <= 0;
         end
 
         else if (write_enable == 1) 
         begin
-            memory[address] = data_in;
+            memory[address] <= data_in;
         end
     end
 

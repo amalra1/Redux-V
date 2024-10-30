@@ -8,9 +8,9 @@ module program_counter (
 always @(posedge clk) begin
 
     if (reset)
-        cur_pc = 0;
+        cur_pc <= 0;
     else
-        cur_pc = n_pc;
+        cur_pc <= n_pc;
 end
     
 endmodule
